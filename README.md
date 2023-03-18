@@ -19,3 +19,4 @@ This web application was developed within a very short timeframe, so some limita
 - **Image saving:** Colony Clicker does not support image writing or saving at this time. Users should simply screenshot the browser window if they would like to retain information.
 - **Window resizing:** The labeling functionality uses the absolute `(x, y)` coordinates of every click. Because of this, any changes to the browser window size or scale will cause the labels to be incorrectly offset.
 - **Window refreshing:** Information about the uploaded image or labels will not be retained between refresh sessions.
+- **Zooming in/out:** Native zooming is not supported. Mac users can still zoom in/out with trackpad gestures. It is not advisable to zoom in/out with the browser, as that will cause scaling issues mentioned in previous points.

@@ -1,5 +1,5 @@
 ## Description
-Colony Clicker is a React web application to assist in MMEJ (Microhomology-mediated end joining) research.
+Colony Clicker is a React web application used to assist in MMEJ (microhomology-mediated end joining) research.
 
 ## Basic usage
 1. Go here: [Colony Clicker](https://al-exe.github.io/)

@@ -20,6 +20,7 @@ function App() {
 
   // create img element when user inputs an image file
   useEffect(() => {
+    console.log("im", imageFile)
     let imageContainer = document.getElementById("imageContainer")
     if (!imageContainer || uploaded) return
 
@@ -74,6 +75,12 @@ function App() {
       if (markers.length === 0) return
       setMarkers(markers.slice(0, -1));
     }
+  }
+
+  const handleRestart = () => {
+    setUploaded(false)
+    setImageFile(null)
+    setMarkers([])
   }
 
   const _withinBounds = (
@@ -137,6 +144,14 @@ function App() {
     }
   }
 
+  const renderInfoColumn = () => {
+    return (
+      <div className="InfoColumn">
+        
+      </div>
+    )
+  }
+
   return (
     <div className="App">
       {renderTopBanner()}
@@ -147,7 +162,48 @@ function App() {
         </div>
         <div className="Body-infoColumn">
           {imageFile ?
-            "#TODO: options and data go here."
+            <div className="InfoColumn">
+              <div className="InfoColumn-section">
+                <div className="InfoColumn-sectionTitle">
+                  General
+                </div>
+                <div className="InfoColumn-titleRow">
+                  <div className="InfoColumn-title">
+                    {imageFile.name}
+                  </div>
+                  <div>
+                    <img src="./close.svg" />
+                  </div>
+                </div>
+                <div className="InfoColumn-countRow" onClick={handleRestart}>
+                  Discard image
+                </div>
+              </div>
+
+              <div className="InfoColumn-section">
+                <div className="InfoColumn-sectionTitle">
+                  Settings
+                </div>
+
+                <div>
+                  Marker type
+                </div>
+
+                <div>
+                  Marker size
+                </div>
+
+                <div>
+                  Marker color
+                </div>
+              </div>
+
+              <div className="InfoColumn-section">
+                <div className="InfoColumn-sectionTitle">
+                  {`Final count: ${markers.length}`}
+                </div>
+              </div>
+            </div>
             :
             "Please upload an image."
           }

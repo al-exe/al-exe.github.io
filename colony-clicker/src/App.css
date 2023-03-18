@@ -54,7 +54,7 @@
   justify-content: center;
   align-items: center;
 
-  background-color: #4a4852;
+  background-color: #6c6977;
   border-radius: 16px;
 }
 
@@ -62,7 +62,7 @@
   width: 20%;
   height: auto;
 
-  background-color: #4a4852;
+  background-color: #6c6977;
   margin: 32px 32px 32px 16px;
 
   display: flex;
@@ -73,7 +73,7 @@
   text-align: center;
 
   border-radius: 16px;
-  color: #dadff7;
+  color: #d9def7;
 }
 
 .ImageGUI {
@@ -85,4 +85,43 @@
   justify-content: center;
   align-items: center;
   color: #dadff7;
+}
+
+.InfoColumn {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 16px;
+  padding-left: 16px;
+  gap: 16px;
+}
+
+.InfoColumn-titleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+}
+
+.InfoColumn-countRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.InfoColumn-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.InfoColumn-sectionTitle {
+  font-size: 36px;
 }

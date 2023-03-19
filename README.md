@@ -1,6 +1,9 @@
 ## Description
 Colony Clicker is a React web application used to assist in MMEJ (microhomology-mediated end joining) research. It was built as a successor to Colony Counter, which attempted to automate the counting process entirely.
 
+<img width="1792" alt="Screenshot 2023-03-19 at 12 27 19 AM" src="https://user-images.githubusercontent.com/20894826/226160835-95eae283-4a4e-4350-a5d6-065b635c1381.png">
+*Image labelled with red numbers.*
+
 ## Basic usage
 1. Go here: [Colony Clicker](https://al-exe.github.io/).
 2. Upload a `png` or `jpg` file for labelling. 

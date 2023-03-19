@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { TfiGithub } from 'react-icons/tfi';
 
 function App() {
   // marker color options
@@ -201,8 +202,11 @@ function App() {
     <div className="App">
       <div className="TopBanner">
         <div className="TopBanner-title">Colony Clicker</div>
-        <div className="TopBanner-info">
-          by @al-exe
+        <div
+          className="TopBanner-info"
+          onClick={() => window.open("https://github.com/al-exe", "_blank")}
+        >
+          <TfiGithub /> @al-exe
         </div>
       </div>
       <div className="Body">

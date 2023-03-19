@@ -188,6 +188,8 @@
   flex-grow: 1;
   height: 24px;
   cursor: pointer;
+  position: relative;
+  padding: 0px;
 }
 
 .InfoColumn-typeOption {
@@ -233,4 +235,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.optionSelected {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 4px;
+  top: 8px;
+  left: calc((20vw - 48px) / 18 - 6px);
 }

@@ -102,17 +102,19 @@ function App() {
     }
   }
 
+  // resets marker state
   const handleClearLabels = () => {
     setMarkers([])
   }
 
-  // discards image and resets state
+  // discards image and resets all state
   const handleRestart = () => {
     setUploaded(false)
     setImageFile(null)
     setMarkers([])
   }
 
+  // sets marker size state after checks
   const handleSizeFont = (size) => {
     let sizeNumber = Number(size)
     if (typeof(sizeNumber) === "number") {
@@ -131,6 +133,18 @@ function App() {
       y > top &&
       y < bottom
     )
+  }
+
+  const _isDark = (hex) => {
+    let c = hex.substring(1)
+    let rgb = parseInt(c, 16)
+    let r = (rgb >> 16) & 0xff
+    let g = (rgb >>  8) & 0xff
+    let b = (rgb >>  0) & 0xff
+
+    let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+    return luma < 128
   }
 
   const renderTopBanner = () => {
@@ -228,7 +242,6 @@ function App() {
 
               <div className="InfoColumn-section">
                 <div className="InfoColumn-sectionTitle">Settings</div>
-
                 <div className="InfoColumn-settingsRow">
                   <div>Label size</div>
                   <input
@@ -237,7 +250,6 @@ function App() {
                     onChange={(event) => handleSizeFont(event.target.value)}
                   />
                 </div>
-
                 <div className="InfoColumn-settings">
                   <div>Label type</div>
                   <div className="InfoColumn-optionsRow">
@@ -256,11 +268,8 @@ function App() {
                   </div>
                 </div>
 
-
                 <div className="InfoColumn-settings">
-                  <div>
-                    Label color
-                  </div>
+                  <div>Label color</div>
                   <div className="InfoColumn-optionsRow">
                     {colors.map((c) => {
                       return (
@@ -269,7 +278,12 @@ function App() {
                           style={{backgroundColor: c}}
                           onClick={() => setMarkerColor(c)}
                         >
-                          <div className="optionSelected" />
+                          {markerColor === c &&
+                            <div
+                              className="optionSelected"
+                              style={{backgroundColor: _isDark(c) ? "#FFFFFF" : "#000000"}}
+                            />
+                          }
                         </div>
                       )
                     })}

@@ -3,10 +3,10 @@ Colony Clicker is a React web application used to assist in MMEJ (microhomology-
 
 ## Basic usage
 1. Go here: [Colony Clicker](https://al-exe.github.io/).
-2. Upload an image for labelling. 
+2. Upload a `png` or `jpg` file for labelling. 
 3. Click anywhere within the image to create a label.
-4. Screenshot your finished work since data will not be saved.
-5. Press `Discard image` in the right hand side when you are finished.
+4. Screenshot your finished work, otherwise data will be lost.
+5. Press `Discard image` in the right hand side to begin labelling the next image.
 
 #### Usage tips
 * To undo your last created label, press `ctrl + z` or `command + z`.
@@ -14,7 +14,7 @@ Colony Clicker is a React web application used to assist in MMEJ (microhomology-
 
 ## Limitations
 This web application was developed within a very short time frame, so some limitations of its capabilities and usability had to be accepted.
-#### **TLDR: It is highly advisable to use Colony Clicker in one browser window (using the entire screen) that will not be resized or refreshed later.**
+#### **TLDR: It is highly advisable to use Colony Clicker in one browser window (using the entire screen) that will not be resized or refreshed.**
 
 - **Image scaling:** The uploaded image cannot be resized or rescaled. Upon upload, the image will be scaled to the proportions of the browser window.
 - **Image saving:** Image saving and writing is not supported. Users should simply screenshot the browser window if they would like to retain their work.

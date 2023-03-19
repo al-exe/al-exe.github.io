@@ -1,6 +1,5 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import ImageContainer from './ImageContainer';
 
 function App() {
   // marker color options

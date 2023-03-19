@@ -146,33 +146,7 @@ function App() {
     return luma < 128
   }
 
-  const renderTopBanner = () => {
-    return (
-      <div className="TopBanner">
-        <div className="TopBanner-title">
-          Colony Clicker
-        </div>
-        <div className="TopBanner-info">
-          by @al-exe
-        </div>
-      </div>
-    )
-  }
-
-  const renderImageInput = () => {
-    if (imageFile) return
-    return (
-      <input
-        id="imageFileInput"
-        type="file"
-        name="avatar"
-        accept="image/png, image/jpeg"
-        onChange={(event) => setImageFile(event.target.files[0])}
-      />
-    )
-  }
-
-  const renderImageClicker = () => {
+  const renderImageSection = () => {
     if (imageFile) {
       return (
         <div id="imageContainer" className="App-imageContainer">
@@ -210,16 +184,30 @@ function App() {
           })}
         </div>
       )
+    } else {
+      return (
+        <input
+          id="imageFileInput"
+          type="file"
+          name="avatar"
+          accept="image/png, image/jpeg"
+          onChange={(event) => setImageFile(event.target.files[0])}
+        />
+      )
     }
   }
 
   return (
     <div className="App">
-      {renderTopBanner()}
+      <div className="TopBanner">
+        <div className="TopBanner-title">Colony Clicker</div>
+        <div className="TopBanner-info">
+          by @al-exe
+        </div>
+      </div>
       <div className="Body">
         <div className="Body-imageContainer">
-          {renderImageInput()}
-          {renderImageClicker()}
+          {renderImageSection()}
         </div>
         <div className="Body-infoColumn">
           {imageFile ?
@@ -238,7 +226,6 @@ function App() {
                   Discard image
                 </div>
               </div>
-
               <div className="InfoColumn-section">
                 <div className="InfoColumn-sectionTitle">Settings</div>
                 <div className="InfoColumn-settingsRow">
@@ -266,7 +253,6 @@ function App() {
                     })}
                   </div>
                 </div>
-
                 <div className="InfoColumn-settings">
                   <div>Label color</div>
                   <div className="InfoColumn-optionsRow">
@@ -289,7 +275,6 @@ function App() {
                   </div>
                 </div>
               </div>
-
               <div className="InfoColumn-section">
                 <div className="InfoColumn-sectionTitle" style={{color: "#f2a918"}}>
                   {`Count: ${markers.length}`}

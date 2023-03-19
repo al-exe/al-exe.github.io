@@ -216,71 +216,70 @@ function App() {
         <div className="Body-infoColumn">
           {imageFile ?
             <div className="InfoColumn">
-              <div className="InfoColumn-section">
+              <div className="InfoColumn-controls">
+                <div className="InfoColumn-section">
+                  <div className="InfoColumn-sectionTitle">
+                    General
+                  </div>
+                  <div className="InfoColumn-discardButton" onClick={handleClearLabels}>
+                    Clear labels
+                  </div>
+                  <div className="InfoColumn-discardButton" onClick={handleRestart}>
+                    Discard image
+                  </div>
+                </div>
+                <div className="InfoColumn-section">
+                  <div className="InfoColumn-sectionTitle">Settings</div>
+                  <div className="InfoColumn-settingsRow">
+                    <div>Label size</div>
+                    <input
+                      className="InfoColumn-size"
+                      defaultValue={markerSize}
+                      onChange={(event) => handleSizeFont(event.target.value)}
+                    />
+                  </div>
+                  <div className="InfoColumn-settings">
+                    <div>Label type</div>
+                    <div className="InfoColumn-optionsRow">
+                      {labelTypes.map((label) => {
+                        return (
+                          <div 
+                            className={label === markerType ?
+                              "InfoColumn-typeOptionSelected" : "InfoColumn-typeOption"
+                            }
+                            onClick={() => setMarkerType(label)}
+                          >
+                            {label}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                  <div className="InfoColumn-settings">
+                    <div>Label color</div>
+                    <div className="InfoColumn-optionsRow">
+                      {colors.map((c) => {
+                        return (
+                          <div
+                            className="InfoColumn-option"
+                            style={{backgroundColor: c}}
+                            onClick={() => setMarkerColor(c)}
+                          >
+                            {markerColor === c &&
+                              <div
+                                className="optionSelected"
+                                style={{backgroundColor: _isDark(c) ? "#FFFFFF" : "#000000"}}
+                              />
+                            }
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="InfoColumn-countSection">
                 <div className="InfoColumn-sectionTitle">
-                  General
-                </div>
-                <div className="InfoColumn-title">
-                  {`File: ${imageFile.name}`}
-                </div>
-                <div className="InfoColumn-discardButton" onClick={handleClearLabels}>
-                  Clear labels
-                </div>
-                <div className="InfoColumn-discardButton" onClick={handleRestart}>
-                  Discard image
-                </div>
-              </div>
-              <div className="InfoColumn-section">
-                <div className="InfoColumn-sectionTitle">Settings</div>
-                <div className="InfoColumn-settingsRow">
-                  <div>Label size</div>
-                  <input
-                    className="InfoColumn-size"
-                    defaultValue={markerSize}
-                    onChange={(event) => handleSizeFont(event.target.value)}
-                  />
-                </div>
-                <div className="InfoColumn-settings">
-                  <div>Label type</div>
-                  <div className="InfoColumn-optionsRow">
-                    {labelTypes.map((label) => {
-                      return (
-                        <div 
-                          className={label === markerType ?
-                            "InfoColumn-typeOptionSelected" : "InfoColumn-typeOption"
-                          }
-                          onClick={() => setMarkerType(label)}
-                        >
-                          {label}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-                <div className="InfoColumn-settings">
-                  <div>Label color</div>
-                  <div className="InfoColumn-optionsRow">
-                    {colors.map((c) => {
-                      return (
-                        <div
-                          className="InfoColumn-option"
-                          style={{backgroundColor: c}}
-                          onClick={() => setMarkerColor(c)}
-                        >
-                          {markerColor === c &&
-                            <div
-                              className="optionSelected"
-                              style={{backgroundColor: _isDark(c) ? "#FFFFFF" : "#000000"}}
-                            />
-                          }
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className="InfoColumn-section">
-                <div className="InfoColumn-sectionTitle" style={{color: "#f2a918"}}>
                   {`Count: ${markers.length}`}
                 </div>
               </div>

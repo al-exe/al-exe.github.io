@@ -25,3 +25,9 @@ This web application was developed within a very short time frame, so some limit
 - **Window resizing:** The labeling functionality uses the absolute `(x, y)` coordinates of every click. Because of this, any changes to the browser window size or scale will cause the labels to be incorrectly offset.
 - **Window refreshing:** Information about the uploaded image or labels will not be retained between refresh sessions.
 - **Zooming in/out:** Native zooming is not supported. Mac users can still zoom in/out with trackpad gestures. It is not advisable to zoom in/out with the browser, as that will cause scaling issues mentioned in previous points.
+
+## Planned work
+These are some issues that may be resolved or supported in the future.
+- **Image scaling:** Keep the proportions of the uploaded image the same as the original. It will still be scaled up to fit the image container.
+- **Labelling accuracy:** Tweak the `(x, y)` coordinates of every click so that they are more accurate.
+- **Double labelling:** Clicking on a label will currently create a label in the top-left of the image container. Check for these kinds of clicks and avoid them.

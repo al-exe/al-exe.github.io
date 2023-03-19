@@ -34,23 +34,7 @@
 
 .TopBanner-info {
   font-size: 24px;
-  color: #282C34;
-  background-color: #d9def7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  height: 52px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.TopBanner-info:hover {
-  background-color: #282C34;
   color: #d9def7;
-  transition: 0.5s;
 }
 
 .Body {

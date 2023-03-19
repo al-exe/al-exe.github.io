@@ -3,9 +3,34 @@ import { useState, useEffect } from 'react';
 import ImageContainer from './ImageContainer';
 
 function App() {
+  // marker color options
+  const colors = [
+    "#FF0000",
+    "#FF7F00",
+    "#FFFF00",
+    "#00FF00",
+    "#0000FF",
+    "#4B0082",
+    "#9400D3",
+    "#000000",
+    "#FFFFFF",
+  ]
+
+  // marker type options
+  const labelTypes = [
+    "numbers",
+    "dots"
+  ]
+
+  // data state
   const [uploaded, setUploaded]   = useState(false)
   const [imageFile, setImageFile] = useState(null)
   const [markers, setMarkers]     = useState([])
+
+  // settings state
+  const [markerColor, setMarkerColor] = useState("#FF0000")
+  const [markerType, setMarkerType]   = useState("numbers")
+  const [markerSize, setMarkerSize]   = useState(16)
 
   // init listeners
   useEffect(() => {
@@ -20,7 +45,6 @@ function App() {
 
   // create img element when user inputs an image file
   useEffect(() => {
-    console.log("im", imageFile)
     let imageContainer = document.getElementById("imageContainer")
     if (!imageContainer || uploaded) return
 
@@ -32,7 +56,7 @@ function App() {
     // setup img styles
     img.style.width = "100%"
     img.style.height = "100%"
-    img.style.borderRadius = "16px"
+    img.style.borderRadius = "8px"
 
     imageContainer.appendChild(img)
 
@@ -72,15 +96,30 @@ function App() {
   const handleKeydown = (event) => {
     // ctrl or command + z
     if (event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault() // prevents undoing the size input
       if (markers.length === 0) return
       setMarkers(markers.slice(0, -1));
     }
   }
 
+  const handleClearLabels = () => {
+    setMarkers([])
+  }
+
+  // discards image and resets state
   const handleRestart = () => {
     setUploaded(false)
     setImageFile(null)
     setMarkers([])
+  }
+
+  const handleSizeFont = (size) => {
+    let sizeNumber = Number(size)
+    if (typeof(sizeNumber) === "number") {
+      if (sizeNumber > 48) sizeNumber = 48
+      if (sizeNumber < 2) sizeNumber = 2
+      setMarkerSize(sizeNumber)
+    }
   }
 
   const _withinBounds = (
@@ -125,31 +164,40 @@ function App() {
       return (
         <div id="imageContainer" className="App-imageContainer">
           {markers.map((m, index) => {
-            return (
-              <div style={{
-                position: "absolute",
-                top: m.y,
-                left: m.x,
-                color: "#FFFFFF",
-                // height: 4,
-                // width: 4,
-                // backgroundColor: "#FFFF00"
-              }}>
-                {m.value}
-              </div>
-            )
+
+            if (markerType === "numbers") {
+              return (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: m.y,
+                    left: m.x,
+                    color: markerColor,
+                    fontSize: markerSize
+                  }}
+                >
+                  {m.value}
+                </div>
+              )
+            } else if (markerType === "dots") {
+              return (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: m.y,
+                    left: m.x,
+                    height: markerSize,
+                    width: markerSize,
+                    borderRadius: markerSize / 2,
+                    backgroundColor: markerColor
+                  }}
+                />
+              )
+            }
           })}
         </div>
       )
     }
-  }
-
-  const renderInfoColumn = () => {
-    return (
-      <div className="InfoColumn">
-        
-      </div>
-    )
   }
 
   return (
@@ -167,40 +215,71 @@ function App() {
                 <div className="InfoColumn-sectionTitle">
                   General
                 </div>
-                <div className="InfoColumn-titleRow">
-                  <div className="InfoColumn-title">
-                    {imageFile.name}
-                  </div>
-                  <div>
-                    <img src="./close.svg" />
-                  </div>
+                <div className="InfoColumn-title">
+                  {`File: ${imageFile.name}`}
                 </div>
-                <div className="InfoColumn-countRow" onClick={handleRestart}>
+                <div className="InfoColumn-discardButton" onClick={handleClearLabels}>
+                  Clear labels
+                </div>
+                <div className="InfoColumn-discardButton" onClick={handleRestart}>
                   Discard image
                 </div>
               </div>
 
               <div className="InfoColumn-section">
-                <div className="InfoColumn-sectionTitle">
-                  Settings
+                <div className="InfoColumn-sectionTitle">Settings</div>
+
+                <div className="InfoColumn-settingsRow">
+                  <div>Label size</div>
+                  <input
+                    className="InfoColumn-size"
+                    defaultValue={markerSize}
+                    onChange={(event) => handleSizeFont(event.target.value)}
+                  />
                 </div>
 
-                <div>
-                  Marker type
+                <div className="InfoColumn-settings">
+                  <div>Label type</div>
+                  <div className="InfoColumn-optionsRow">
+                    {labelTypes.map((label) => {
+                      return (
+                        <div 
+                          className={label === markerType ?
+                            "InfoColumn-typeOptionSelected" : "InfoColumn-typeOption"
+                          }
+                          onClick={() => setMarkerType(label)}
+                        >
+                          {label}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
 
-                <div>
-                  Marker size
-                </div>
 
-                <div>
-                  Marker color
+                <div className="InfoColumn-settings">
+                  <div>
+                    Label color
+                  </div>
+                  <div className="InfoColumn-optionsRow">
+                    {colors.map((c) => {
+                      return (
+                        <div
+                          className="InfoColumn-option"
+                          style={{backgroundColor: c}}
+                          onClick={() => setMarkerColor(c)}
+                        >
+                          <div className="optionSelected" />
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
 
               <div className="InfoColumn-section">
-                <div className="InfoColumn-sectionTitle">
-                  {`Final count: ${markers.length}`}
+                <div className="InfoColumn-sectionTitle" style={{color: "#f2a918"}}>
+                  {`Count: ${markers.length}`}
                 </div>
               </div>
             </div>

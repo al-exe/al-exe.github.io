@@ -219,7 +219,7 @@ function App() {
               <div className="InfoColumn-controls">
                 <div className="InfoColumn-section">
                   <div className="InfoColumn-sectionTitle">
-                    General
+                    Actions
                   </div>
                   <div className="InfoColumn-discardButton" onClick={handleClearLabels}>
                     Clear labels

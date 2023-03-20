@@ -51,9 +51,23 @@ function App() {
     const img = document.createElement("img");
 
     img.onload = function() {
+      let ic = document.getElementById("Body-imageContainer")
+      let icRect = ic.getBoundingClientRect()
+
       img.classList.add("obj");
       img.file = imageFile;
-      img.style.height = "100%"
+
+      if (img.height > img.width) {
+        img.style.height = "100%"
+        if (img.width > icRect.width) {
+          img.width = img.width * (img.height / icRect.height)
+        }
+      } else {
+        img.style.width = "100%"
+        if (img.height > icRect.height) {
+          img.height = img.height * (img.width / icRect.width)
+        }
+      }
       img.style.borderRadius = "8px"
       imageContainer.appendChild(img)
       setUploaded(true)
@@ -209,7 +223,7 @@ function App() {
         </div>
       </div>
       <div className="Body">
-        <div className="Body-imageContainer">
+        <div className="Body-imageContainer" id="Body-imageContainer">
           {renderImageSection()}
         </div>
         <div className="Body-infoColumn">

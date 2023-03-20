@@ -85,7 +85,6 @@ function App() {
     let imageContainer = document.getElementById("imageContainer")
     if (!imageContainer) return
 
-    console.log("EVENT:", event)
     let rect = imageContainer.getBoundingClientRect()
     if (_withinBounds(
       event.x,
@@ -99,8 +98,8 @@ function App() {
         ...markers,
         {
           value: markers.length + 1,
-          x: event.layerX,
-          y: event.layerY
+          x: event.layerX - markerSize * 0.4,
+          y: event.layerY - markerSize / 2,
         }
       ])
     }

@@ -49,16 +49,15 @@ function App() {
     if (!imageContainer || uploaded) return
 
     const img = document.createElement("img");
-    img.classList.add("obj");
-    img.file = imageFile;
-    setUploaded(true)
 
-    // setup img styles
-    img.style.width = "100%"
-    img.style.height = "100%"
-    img.style.borderRadius = "8px"
-
-    imageContainer.appendChild(img)
+    img.onload = function() {
+      img.classList.add("obj");
+      img.file = imageFile;
+      img.style.height = "100%"
+      img.style.borderRadius = "8px"
+      imageContainer.appendChild(img)
+      setUploaded(true)
+    }
 
     const reader = new FileReader()
     reader.onload = (event) => {

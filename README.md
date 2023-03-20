@@ -1,7 +1,7 @@
 ## Description
-Colony Clicker is a React web application used to assist in MMEJ (microhomology-mediated end joining) research. It was built as a successor to Colony Counter, which attempted to automate the counting process entirely.
+Colony Clicker is a React web application used to assist in MMEJ (microhomology-mediated end joining) research. It was built as a successor to Colony Counter, which ambitiously attempted to automate the counting process entirely.
 
-<img width="1792" alt="Screenshot 2023-03-19 at 12 27 19 AM" src="https://user-images.githubusercontent.com/20894826/226160835-95eae283-4a4e-4350-a5d6-065b635c1381.png">
+<img width="1792" alt="Screenshot 2023-03-19 at 10 05 34 PM" src="https://user-images.githubusercontent.com/20894826/226251511-a6f9cc87-4209-4563-8618-bfd6c39a1dba.png">
 
 *Image labelled with red numbers.*
 
@@ -26,8 +26,7 @@ This web application was developed within a very short time frame, so some limit
 - **Window refreshing:** Information about the uploaded image or labels will not be retained between refresh sessions.
 - **Zooming in/out:** Native zooming is not supported. Mac users can still zoom in/out with trackpad gestures. It is not advisable to zoom in/out with the browser, as that will cause scaling issues mentioned in previous points.
 
-## Planned work
-These are some issues that may be resolved or supported in the future.
-- **Image scaling:** Keep the proportions of the uploaded image the same as the original. It will still be scaled up to fit the image container.
-- **Labelling accuracy:** Tweak the `(x, y)` coordinates of every click so that they are more accurate.
-- **Double labelling:** Clicking on a label will currently create a label in the top-left of the image container. Check for these kinds of clicks and avoid them.
+## Future
+These are some things that may be supported in the future.
+- **Labelling accuracy:** Allow users to tweak `(x, y)` coordinates offsets for increased accuracy.
+- **Native screenshotting:** Allow users to download the labelled image.

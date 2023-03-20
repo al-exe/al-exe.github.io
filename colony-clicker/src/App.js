@@ -65,7 +65,7 @@ function App() {
       img.src = event.target.result;
     }
     reader.readAsDataURL(imageFile)
-  }, [imageFile])
+  }, [imageFile, uploaded])
 
   // creates a marker on the click location
   const handleClick = (event) => {
@@ -151,8 +151,7 @@ function App() {
     if (imageFile) {
       return (
         <div id="imageContainer" className="App-imageContainer">
-          {markers.map((m, index) => {
-
+          {markers.map((m) => {
             if (markerType === "numbers") {
               return (
                 <div
@@ -182,6 +181,7 @@ function App() {
                 />
               )
             }
+            return null
           })}
         </div>
       )

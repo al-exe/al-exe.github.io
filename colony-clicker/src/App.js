@@ -57,17 +57,15 @@ function App() {
       img.classList.add("obj");
       img.file = imageFile;
 
-      if (img.height > img.width) {
-        img.style.height = "100%"
-        if (img.width > icRect.width) {
-          img.width = img.width * (img.height / icRect.height)
-        }
+      let containerAR = icRect.width / icRect.height
+      let imgAR = img.width / img.height
+
+      if (imgAR < containerAR) {
+        img.height = icRect.height
       } else {
-        img.style.width = "100%"
-        if (img.height > icRect.height) {
-          img.height = img.height * (img.width / icRect.width)
-        }
+        img.width = icRect.width
       }
+
       img.style.borderRadius = "8px"
       imageContainer.appendChild(img)
       setUploaded(true)

@@ -85,6 +85,7 @@ function App() {
     let imageContainer = document.getElementById("imageContainer")
     if (!imageContainer) return
 
+    console.log("EVENT:", event)
     let rect = imageContainer.getBoundingClientRect()
     if (_withinBounds(
       event.x,
@@ -170,10 +171,11 @@ function App() {
                 <div
                   style={{
                     position: "absolute",
+                    pointerEvents: "none",
                     top: m.y,
                     left: m.x,
                     color: markerColor,
-                    fontSize: markerSize
+                    fontSize: markerSize,
                   }}
                 >
                   {m.value}
@@ -184,6 +186,7 @@ function App() {
                 <div
                   style={{
                     position: "absolute",
+                    pointerEvents: "none",
                     top: m.y,
                     left: m.x,
                     height: markerSize,

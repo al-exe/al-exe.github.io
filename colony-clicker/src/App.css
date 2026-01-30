@@ -13,14 +13,53 @@
   cursor: crosshair;
   background-color: #000000;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.App-imageStageWrap {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
+.App-imageStage {
+  position: relative;
+  transform-origin: top left;
+}
+
+.App-zoomControls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.App-zoomButton {
+  width: 32px;
+  height: 32px;
+  background-color: #1F3A93;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.App-zoomButton:hover {
+  background-color: #162A6A;
+  transition: 0.3s;
+}
+
 .TopBanner {
-  height: 100px;
+  height: 7.5vh;
   width: auto;
   background-color: #282C34;
   display: flex;
@@ -38,8 +77,8 @@
 
 .TopBanner-info {
   font-size: 24px;
-  color: #282C34;
-  background-color: #d9def7;
+  color: #d9def7;
+  background-color: #282C34;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,8 +91,8 @@
 }
 
 .TopBanner-info:hover {
-  background-color: #282C34;
-  color: #d9def7;
+  background-color: #d9def7;
+  color: #282C34;
   transition: 0.5s;
 }
 
@@ -89,6 +128,7 @@
   align-items: center;
   text-align: center;
   border-radius: 8px;
+  border: 1px solid #E5E7EB;
   color: #282C34;
   box-shadow: 0px 0px 25px 16px rgba(228,228,228,0.75);
 }
@@ -121,7 +161,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 .InfoColumn-countRow {
@@ -142,7 +182,9 @@
   margin-bottom: 36px;
   background-color: #F2A918;
   color: #FFFFFF;
-  border-radius: 4px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  font-size: 200%;
 }
 
 .InfoColumn-section {
@@ -155,24 +197,44 @@
 }
 
 .InfoColumn-sectionTitle {
-  font-size: 36px;
+  font-size: 27px;
 }
 
 .InfoColumn-discardButton {
   width: 100%;
   height: 42px;
-  background-color: #FF0000;
+  background-color: #1F3A93;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
   cursor: pointer;
 }
 
+.InfoColumn-downloadButton {
+  width: 100%;
+  height: 42px;
+  background-color: #1F3A93;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  cursor: pointer;
+}
+
+.InfoColumn-downloadButton:hover {
+  background-color: #162A6A;
+  transition: 0.5s;
+}
+
 .InfoColumn-discardButton:hover {
-  background-color: #000000;
+  background-color: #162A6A;
   transition: 0.5s;
 }
 
@@ -181,6 +243,8 @@
   height: 24px;
   display: flex;
   flex-direction: row;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
 }
 
 .InfoColumn-settings {
@@ -192,6 +256,7 @@
   background-color: #EEEEEE;
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid #E5E7EB;
   gap: 8px;
 }
 
@@ -204,6 +269,7 @@
   background-color: #EEEEEE;
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid #E5E7EB;
   gap: 8px;
 }
 
@@ -213,6 +279,17 @@
   cursor: pointer;
   position: relative;
   padding: 0px;
+  border-left: 1px solid #E5E7EB;
+}
+
+.InfoColumn-option:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.InfoColumn-option:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .InfoColumn-typeOption {
@@ -226,6 +303,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-left: 1px solid #E5E7EB;
 }
 
 .InfoColumn-typeOptionSelected {
@@ -239,12 +317,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-left: 1px solid #E5E7EB;
 }
 
 .InfoColumn-typeOption:hover {
   background-color: #282C34;
   color: #FFFFFF;
   transition: 0.5s;
+}
+
+.InfoColumn-typeOption:first-child,
+.InfoColumn-typeOptionSelected:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.InfoColumn-typeOption:last-child,
+.InfoColumn-typeOptionSelected:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .InfoColumn-size {
@@ -258,6 +349,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
 }
 
 .optionSelected {
